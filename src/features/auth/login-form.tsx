@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Separator } from "@/components/ui/separator"
 
 export default function LoginForm() {
   const [email, setEmail] = useState('')
@@ -34,6 +35,10 @@ export default function LoginForm() {
     } catch (error) {
       setError('An unexpected error occurred')
     }
+  }
+
+  const handleGoogleSignIn = () => {
+    signIn('google', { callbackUrl: '/' })
   }
 
   return (
@@ -75,6 +80,26 @@ export default function LoginForm() {
           )}
           <Button type="submit" className="w-full mt-4">Login</Button>
         </form>
+        <div className="relative my-4">
+
+          <Separator />
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-2 text-xs text-muted-foreground">
+            Or continue with
+          </span>
+        </div>
+        <Button
+          variant="outline"
+          className="w-full"
+          onClick={handleGoogleSignIn}
+        >
+          <img
+            className="pr-2"
+            src="/images/google.svg"
+            alt=""
+            style={{ height: "1.5rem" }}
+          />
+          Sign in with Google
+        </Button>
       </CardContent>
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
