@@ -1,17 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { DefaultSession } from "next-auth"
 
-interface UserInfo {
-  user: {
-    id: string
-    name: string
-    email: string
-    image: string
-  },
-  expires: string
-}
-
-
-export default function UserInfo({ user, expires }: UserInfo) {
+export default function UserInfo({ user, expires }: DefaultSession) {
   return (
     <Card>
       <CardHeader>
